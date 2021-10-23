@@ -1,0 +1,34 @@
+﻿@model WelcomeModel
+@{
+    ViewData["Title"] = "Вход";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Добро пожаловать в Веб Калькулятор!</h1>
+
+<h3>Введите свои данные для входа:</h3>
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(m => m.UserName)
+        <br />
+        @Html.EditorFor(m => m.UserName)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Password)
+        <br />
+        @Html.PasswordFor(m => m.Password)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.RememberMe)
+        @Html.CheckBoxFor(m => m.RememberMe)
+    </div>
+    
+    <div>
+        <button type="submit" style="font-size:14px">Войти</button>
+    </div>
+}
+

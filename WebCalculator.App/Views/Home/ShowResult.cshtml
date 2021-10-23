@@ -1,0 +1,17 @@
+﻿@model Calculation
+@{
+    ViewData["Title"] = "Результат";
+}
+<div class="text-left">
+    <h1>Результат вычислений</h1>
+    <h5>Выражение:</h5>
+    @Html.TextAreaFor(m => m.Expression, new { @disabled = "disabled" })<br />
+    <h5>Результат:</h5>
+    @Html.EditorFor(m => m.Result)
+</div>
+<div class="text-left">
+    @using (Html.BeginForm("ShowHistory", "Home", FormMethod.Get))
+    {
+        <button type="submit">Посмотреть историю вычислений</button>
+    }
+</div>

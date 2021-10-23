@@ -1,0 +1,35 @@
+﻿@model RegisterModel
+@{
+    ViewData["Title"] = "Регистрация";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Регистрация</h1>
+
+<h3>Введите свои данные для регистрации:</h3>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(m => m.UserName)
+        <br />
+        @Html.EditorFor(m => m.UserName)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Password)
+        <br />
+        @Html.PasswordFor(m => m.Password)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.RepeatPassword)
+        <br />
+        @Html.PasswordFor(m => m.RepeatPassword)
+    </div>
+
+    <div>
+        <br />
+        <button type="submit" style="font-size:14px">Зарегистрироваться</button>
+    </div>
+}

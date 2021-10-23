@@ -1,0 +1,21 @@
+﻿@model CalculateModel
+@{
+    ViewData["Title"] = "Вычисление";
+}
+<script src="~/js/math.js">
+    
+</script>
+<div class="text-left">
+    <h1>Калькулятор</h1>
+    <h3>Введите выражение для вычисления:</h3>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        @Html.LabelFor(m => m.NumbersType)<br />
+        @Html.DropDownListFor(m => m.NumbersType, Html.GetEnumSelectList(typeof(NumbersType)), "Выберите тип чисел")<br />
+        @Html.LabelFor(m => m.IsInRadians)<span>&nbsp;</span>
+        @Html.CheckBoxFor(m => m.IsInRadians)<br />
+        @Html.LabelFor(m => m.Expression)<br />
+        @Html.TextAreaFor(m => m.Expression)<br />
+        <button type="submit">Вычислить</button>
+    }
+</div>
