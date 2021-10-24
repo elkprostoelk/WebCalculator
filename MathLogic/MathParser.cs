@@ -82,7 +82,7 @@ namespace IntegralCalculator
         {
             if (string.IsNullOrEmpty(expression))
             {
-                throw new ArgumentNullException("Выражение равно нулю или отсутствует");
+                throw new ArgumentNullException("Expression is null or empty!");
             }
             var formattedString = new StringBuilder();
             int balanceOfParenth = 0;
@@ -112,7 +112,7 @@ namespace IntegralCalculator
             }
             if (balanceOfParenth != 0)
             {
-                throw new FormatException("Количества открывающих и закрывающих скобок различаются");
+                throw new FormatException("Opening and closing parentheses numbers are not equal!");
             }
             return formattedString.ToString();
         }
@@ -135,7 +135,7 @@ namespace IntegralCalculator
                 }
                 else
                 {
-                    throw new FormatException("Ошибка формата, присутствуют функции без скобок");
+                    throw new FormatException("Format error. There are some functions without parentheses!");
                 }
             }
             return outputString.ToString();
@@ -174,7 +174,7 @@ namespace IntegralCalculator
                 }
                 else
                 {
-                    throw new ArgumentException("Неизвестный знак");
+                    throw new ArgumentException("Unknown sign!");
                 }
 
             }
@@ -267,7 +267,7 @@ namespace IntegralCalculator
                 Multiply or Divide => 4,
                 Degree or Sqrt => 8,
                 Sin or Cos or Tg or Ctg or Sh or Ch or Th or Log or Ln or Exp or Abs or Arcsin or Arccos or Arctg => 10,
-                _ => throw new ArgumentException("Неизвестный оператор"),
+                _ => throw new ArgumentException("Unknown operator!"),
             };
         }
         private double Calculate(string expression)
@@ -282,7 +282,7 @@ namespace IntegralCalculator
             }
             if (stack.Count > 1)
             {
-                throw new ArgumentException("Избыточный операнд");
+                throw new ArgumentException("Redundant operand!");
             }
             return stack.Pop();
         }
@@ -348,7 +348,7 @@ namespace IntegralCalculator
                     case Divide:
                         if (arg2 == 0)
                         {
-                            throw new DivideByZeroException("Второй аргумент равен нулю");
+                            throw new DivideByZeroException("Second argument is zero!");
                         }
                         rst = arg1 / arg2;
                         break;
@@ -359,7 +359,7 @@ namespace IntegralCalculator
                         rst = Math.Log(arg2, arg1);
                         break;
                     default:
-                        throw new ArgumentException("Неизвестный оператор");
+                        throw new ArgumentException("Unknown operator!");
                 }
                 stack.Push(rst);
             }
@@ -379,7 +379,7 @@ namespace IntegralCalculator
             {
                 UnPlus or UnMinus or Sqrt or Tg or Sh or Ch or Th or Ln or Ctg or Sin or Cos or Exp or Abs or Arcsin or Arccos or Arctg => 1,
                 Plus or Minus or Multiply or Divide or Degree or Log => 2,
-                _ => throw new ArgumentException("Неизвестный оператор"),
+                _ => throw new ArgumentException("Unknown operator!"),
             };
         }
     }
