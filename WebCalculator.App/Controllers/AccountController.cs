@@ -45,7 +45,7 @@ namespace WebCalculator.App.Controllers
 
             if (user == null)
             {
-                return NotFound($"User {welcomeModel.UserName} is not found!");
+                return RedirectToAction("Error", "Account", new ErrorViewModel() { Message = $"User {welcomeModel.UserName} is not found!" });
             }
 
             var signInResult = await _signInManager.PasswordSignInAsync(user, welcomeModel.Password, welcomeModel.RememberMe, lockoutOnFailure: false);

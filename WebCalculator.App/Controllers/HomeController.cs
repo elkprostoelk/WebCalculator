@@ -56,7 +56,7 @@ namespace WebCalculator.App.Controllers
                             break;
                         }
                     default:
-                        return RedirectToAction(nameof(Error));
+                        return RedirectToAction("Error", "Home", new ErrorViewModel { Message = "Numbers type hasn't been selected!" });
                 }
                 var calculation = _dbContext.Calculations.Add(new Calculation()
                 {
@@ -69,7 +69,7 @@ namespace WebCalculator.App.Controllers
             }
             catch (Exception e)
             {
-                return RedirectToAction("Error", "Home", e.Message);
+                return RedirectToAction("Error", "Home", new ErrorViewModel { Message = e.InnerException?.Message ?? e.Message });
             }
             
 
