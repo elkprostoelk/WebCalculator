@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Web Calculator</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -19,13 +19,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">На главную</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">На главную</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Регистрация</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Register">Регистрация</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Help">Помощь</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Help">Помощь</a>
                         </li>
                     </ul>
                 </div>
@@ -36,23 +36,23 @@
                             <li class="nav-item">
                                 @using (Html.BeginForm("ShowHistory", "Home", FormMethod.Get, new { @id = "showHistoryForm" }))
                                 {
-                                    <a class="nav-link text-dark" href="javascript:void" onclick="document.getElementById('showHistoryForm').submit()">История</a>
+                                    <a class="nav-link text-light" href="javascript:void" onclick="$('#showHistoryForm').submit()">История</a>
                                 }
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@User.Identity.Name</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">@User.Identity.Name</a>
                             </li>
                             <li class="nav-item">
                                 @using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { @id = "logoutForm" }))
                                 {
-                                    <a class="nav-link text-dark" href="javascript:void" onclick="document.getElementById('logoutForm').submit()">Выход</a>
+                                    <a class="nav-link text-light" href="javascript:void" onclick="$('#logoutForm').submit()">Выход</a>
                                 }
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Вход</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Login">Вход</a>
                             </li>
                         }
                     </ul>
