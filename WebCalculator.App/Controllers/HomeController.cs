@@ -91,6 +91,16 @@ namespace WebCalculator.App.Controllers
             return View(calculations);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ClearHistory()
+        {
+            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+            var userCalculations = _dbContext.Calculations.Where(c => c.UserId == user.Id);
+            _dbContext.Calculations.RemoveRange(userCalculations);
+            await _dbContext.SaveChangesAsync();
+            return RedirectToAction("ShowHistory", "Home");
+        }
+
         [AllowAnonymous]
         public IActionResult Help()
         {

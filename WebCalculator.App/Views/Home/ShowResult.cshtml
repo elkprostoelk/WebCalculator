@@ -4,11 +4,12 @@
 }
 <div class="text-left">
     <h1>Результат вычислений</h1>
-    <h5>Выражение:</h5>
+    <h4>Выражение:</h4>
     @Html.TextAreaFor(m => m.Expression, new { @disabled = "disabled" })<br />
-    <h5>Результат:</h5>
+    <h4>Результат:</h4>
     @Html.EditorFor(m => m.Result)
 </div>
+<br />
 <div class="text-left">
     @using (Html.BeginForm("ShowHistory", "Home", FormMethod.Get))
     {

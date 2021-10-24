@@ -19,6 +19,11 @@
                 </tr>
             }
         </table>
+        <br />
+        @using (Html.BeginForm("ClearHistory", "Home", FormMethod.Post))
+        {
+            <button type="submit">Очистить историю вычислений</button>
+        }
     }
     else
     {
