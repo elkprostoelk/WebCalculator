@@ -45,7 +45,7 @@ namespace WebCalculator.App.Controllers
 
             if (user == null)
             {
-                return RedirectToAction("Error", "Account", new ErrorViewModel() { Message = $"User {welcomeModel.UserName} is not found!" });
+                return RedirectToAction("Error", new ErrorViewModel() { Message = $"User {welcomeModel.UserName} is not found!" });
             }
 
             var signInResult = await _signInManager.PasswordSignInAsync(user, welcomeModel.Password, welcomeModel.RememberMe, lockoutOnFailure: false);
@@ -80,14 +80,14 @@ namespace WebCalculator.App.Controllers
                     await _dbContext.SaveChangesAsync();
                     return RedirectToAction("Index", "Home");
                 }
-                return RedirectToAction("Error", "Home", new ErrorViewModel
+                return RedirectToAction("Error", new ErrorViewModel
                 {
                     RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
                 });
             }
             catch (Exception e)
             {
-                return RedirectToAction("Error", "Home", new ErrorViewModel { 
+                return RedirectToAction("Error", new ErrorViewModel { 
                     RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
                     Message = e.Message
                 });
@@ -100,6 +100,16 @@ namespace WebCalculator.App.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error(string message)
+        {
+            return View(new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+                Message = message
+            });
         }
     }
 }

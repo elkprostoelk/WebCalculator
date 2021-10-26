@@ -10,12 +10,14 @@
             <tr>
                 <th>Выражение:</th>
                 <th>Результат:</th>
+                <th>Дата операции:</th>
             </tr>
             @foreach (var item in Model)
             {
                 <tr>
                     <td>@item.Expression</td>
                     <td>@item.Result</td>
+                    <td>@item.CalcDate</td>
                 </tr>
             }
         </table>

@@ -25,8 +25,13 @@ namespace WebCalculator.App.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+            if (user == null)
+            {
+                return RedirectToAction("Logout", "Account");
+            }
             return View();
         }
 
@@ -62,6 +67,7 @@ namespace WebCalculator.App.Controllers
                 {
                     Expression = calculateModel.Expression,
                     Result = result.ToString(),
+                    CalcDate = DateTime.Now,
                     UserId = user.Id
                 });
                 await _dbContext.SaveChangesAsync();
