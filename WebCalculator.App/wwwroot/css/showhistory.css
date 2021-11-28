@@ -1,0 +1,11 @@
+﻿body {
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.expression {
+    overflow-wrap:anywhere;
+}

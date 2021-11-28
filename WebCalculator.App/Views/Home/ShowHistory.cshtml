@@ -1,4 +1,6 @@
 ﻿@model ICollection<Calculation>
+<link rel="stylesheet" type="text/css" href="~/css/showhistory.css" />
+
 @{
     ViewData["Title"] = "История результатов";
 }
@@ -8,7 +10,7 @@
     {
         <table border="1" cellpadding="1">
             <tr>
-                <th><h5>Выражение:</h5></th>
+                <th class="expression"><h5>Выражение:</h5></th>
                 <th><h5>Результат:</h5></th>
                 <th><h5>Дата операции:</h5></th>
             </tr>
